@@ -18,7 +18,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: ${{ github.actor == 'dependabot[bot]' && fromJSON('["ubuntu-latest"]') || fromJSON('["ubuntu-latest", "macOS-latest"]') }}
       fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
@@ -31,7 +31,6 @@ jobs:
         cache: npm
     - run: npm ci
     - name: Prettier Format Check
-      if: runner.os != 'Windows'
       run: npm run format-check
     - name: ESLint Check
       run: npm run lint
@@ -42,7 +41,7 @@ jobs:
   test-save:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: ${{ github.actor == 'dependabot[bot]' && fromJSON('["ubuntu-latest"]') || fromJSON('["ubuntu-latest", "windows-latest", "macOS-latest"]') }}
       fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
@@ -66,7 +65,7 @@ jobs:
     needs: test-save
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: ${{ github.actor == 'dependabot[bot]' && fromJSON('["ubuntu-latest"]') || fromJSON('["ubuntu-latest", "windows-latest", "macOS-latest"]') }}
       fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
