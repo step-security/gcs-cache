@@ -1,0 +1,3 @@
+[[IgnoredVulns]]
+id = "GHSA-w5hq-g745-h8pq"
+reason = "uuid is a transitive dependency not used directly in source code"
