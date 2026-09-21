@@ -1,3 +1,9 @@
 import { saveOnlyRun } from "./saveImpl";
+import { validateSubscription } from "./utils/subscriptionUtils";
 
-saveOnlyRun(true);
+async function run() {
+    await validateSubscription();
+    await saveOnlyRun(true);
+}
+
+run();

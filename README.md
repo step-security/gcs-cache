@@ -143,8 +143,6 @@ This fork maintains complete compatibility with:
 
 See the [official repo](https://github.com/actions/cache/) for more information on the base action.
 
-> **Note:** The GitHub cache backend service is undergoing changes as of February 1st, 2025. This fork is compatible with the new v2 cache service APIs.
-
 ## Usage
 
 ### Pre-requisites
